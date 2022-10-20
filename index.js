@@ -3,6 +3,7 @@ const { existsSync, writeFileSync } = require('fs');
 const { EOL } = require('os');
 const path = require('path');
 const semverInc = require('semver/functions/inc')
+const core = require('@actions/core');
 
 // Change working directory if user defined APPSETTINGSJSON_DIR
 if (process.env.PACKAGEJSON_DIR) {
@@ -197,7 +198,7 @@ const appsettingsObject = getAppsettingsJson();
     await runInWorkspace('git', ['checkout', currentBranch]);
     newVersion = `${tagPrefix}${newVersion}`;
     console.log(`newVersion after merging tagPrefix+newVersion: ${newVersion}`);
-    console.log(`::set-output name=newTag::${newVersion}`);
+    core.setOutput("newTag", newVersion);
 
     const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`;
     if (process.env['INPUT_SKIP-TAG'] !== 'true') {

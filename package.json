@@ -20,6 +20,7 @@
     "end-to-end-test": "jest --roots=tests/end-to-end --testTimeout=300000 --runInBand"
   },
   "dependencies": {
+    "@actions/core": "^1.10.0",
     "semver": "^7.3.8"
   },
   "devDependencies": {
