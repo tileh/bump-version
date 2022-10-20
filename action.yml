@@ -1,5 +1,5 @@
 name: Automated Version Bump
-description: Automated version bump for npm packages.
+description: Automated version bump
 runs:
   using: node16
   main: index.js
