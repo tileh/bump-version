@@ -213,8 +213,7 @@ const appsettingsObject = getAppsettingsJson();
       }
     }
   } catch (e) {
-    logError(e);
-    exitFailure('Failed to bump version');
+    exitFailure(e);
     return;
   }
   exitSuccess('Version bumped!');
@@ -232,14 +231,9 @@ function exitSuccess(message) {
 }
 
 function exitFailure(message) {
-  logError(message);
+  core.setFailed(`✖  fatal: Action failed with error ${error.stack || error}`)
   process.exit(1);
 }
-
-function logError(error) {
-  console.error(`✖  fatal     ${error.stack || error}`);
-}
-
 
 function runInWorkspace(command, args) {
   return new Promise((resolve, reject) => {
