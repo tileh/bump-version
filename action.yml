@@ -51,8 +51,8 @@ inputs:
     default: ''
     required: false
   default:
-    description: 'Set a default version bump to use'
-    default: 'patch'
+    description: 'Set a default version bump to use (major, minor, patch)'
+    default: ''
     required: false
   preid:
     description: 'Set a custom preid for prerelease build'
