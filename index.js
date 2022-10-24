@@ -185,7 +185,7 @@ const appsettingsObject = getAppsettingsJson();
     newVersion = `${tagPrefix}${newVersion}`;
     // change appsettings.json file
     appsettingsObject.ApplicationVersion = newVersion;
-    await writeFileSync(path.join(workspace, 'src', 'appsettings.json'), JSON.stringify(appsettingsObject));
+    await writeFileSync(path.join(workspace, 'src', 'appsettings.json'), JSON.stringify(appsettingsObject, null, 2));
     if (process.env['INPUT_SKIP-COMMIT'] !== 'true') {
       await runInWorkspace('git', ['commit', '-a', '-m', commitMessage.replace(/{{version}}/g, newVersion)]);
     }
